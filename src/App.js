@@ -10,18 +10,13 @@ function App() {
 	const handleMessage = (msg) => console.log(msg);
 
 	useEffect(() => {
+		// Conectarse al cliente de wp
 		socket.emit("wp-connect", []);
 
-		socket.on("message", (msg) => handleMessage(msg));
-
-		socket.on("ready", (msg) => handleMessage(msg));
-
+		// Escuchar evento qr
 		socket.on("qr", (qr) => setQr(qr));
 
-		socket.on("connected", () => {
-			console.log("user connected into the server");
-		});
-
+		// Escuchar el evento de auth y recibir el token de sesion
 		socket.on("authenticated", ({ sessionToken }) => {
 			window.sessionStorage.setItem(
 				"wpSessionToken",
@@ -41,6 +36,14 @@ function App() {
 			);
 		});
 
+		socket.on("message", (msg) => handleMessage(msg));
+
+		socket.on("ready", (msg) => handleMessage(msg));
+
+		socket.on("connected", () => {
+			console.log("user connected into the server");
+		});
+
 		socket.on("session-failed", (msg) => {
 			console.error(msg);
 		});
@@ -57,19 +60,14 @@ function App() {
 	const sendMessage = () => {
 		const numbers = [573007778958, 573044197396];
 
-		const sessionToken = JSON.parse(
-			window.sessionStorage.getItem("wpSessionToken")
-		);
+		const sessionToken = getSession();
 
 		if (sessionToken) console.log("session token exist");
 
 		let data = {
-			number: numbers[1],
 			message: "Hello client! want some bitcoins?",
 			sessionToken,
 		};
-
-		debugger;
 
 		axios({
 			method: "post",
@@ -93,6 +91,30 @@ function App() {
 		// socket.emit("send-message", data);
 	};
 
+	const saveSession = async () => {
+		const session = getSession();
+		const data = {
+			session,
+		};
+
+		try {
+			await axios({
+				method: "post",
+				url: `${config.serverDomain}api/asesor/session`,
+				data,
+				headers: {
+					id_asesor: 3,
+				},
+			});
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const getSession = () => {
+		return JSON.parse(window.sessionStorage.getItem("wpSessionToken"));
+	};
+
 	return (
 		<div className="App">
 			<header className="App-header">
@@ -103,6 +125,7 @@ function App() {
 				)}
 
 				<button onClick={sendMessage}>send message</button>
+				<button onClick={saveSession}>save session</button>
 			</header>
 		</div>
 	);

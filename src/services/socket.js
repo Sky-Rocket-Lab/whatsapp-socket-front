@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 export const config = {
-	// serverDomain: "http://34.135.191.239/",
+	// serverDomain: "http://34.135.104.96/",
 	serverDomain: "http://localhost:8030/",
 };
 
