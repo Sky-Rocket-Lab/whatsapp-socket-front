@@ -110,6 +110,9 @@ function App() {
     return (
         <div className='App'>
             <Home />
+            <Routes>
+                <Route path='/' exact element={Home} />
+            </Routes>
         </div>
     )
 }
