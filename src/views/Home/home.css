@@ -9,57 +9,131 @@
     position: relative;
 
     font-size: 1rem;
-    color: white;
+    color: var(--bg-color);
     overflow: hidden;
 }
 
 .qr-container {
     border: 10px solid;
     border-image-slice: 1;
-    border-width: 5px;
+    border-width: 10px;
     margin-bottom: 10rem;
 
-    width: 15rem;
-    height: 15rem;
-    padding: 1rem;
+    width: 20rem;
+    height: 20rem;
+    padding: 1%;
     border-image-source: var(--border-color-gradient);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-container .qr {
+    width: 100%;
+    height: 100%;
+
+    max-height: 15rem;
+    max-width: 15rem;
+    background-color: var(--square-color);
+    border-radius: 2%;
+    padding: 5%;
+    margin: 10%;
+
+    color: var(--blue-color);
 }
 
 .blob {
     width: 100vw;
-    height: 40vh;
+    height: 30vh;
     position: absolute;
     bottom: 0;
-    padding-top: 10%;
+    padding-top: 5%;
 
     display: flex;
     justify-content: center;
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
 }
 
-.blob .text-blob {
-    margin-top: 6rem;
-    color: white;
-    width: 70%;
+.text-blob {
+    color: var(--bg-color);
+    width: 90%;
     height: 10rem;
-    /* border: 1px solid black; */
+
     font-weight: 100;
     letter-spacing: 1px;
     font-size: 2rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+
+    position: absolute;
+    bottom: 0%;
 }
 
+.title {
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 1.9rem;
+    letter-spacing: 1px;
+    word-spacing: 0.5rem;
+    color: var(--blue-color);
+}
+
+.logo {
+    position: absolute;
+    left: 2rem;
+    top: 2rem;
+    height: 4rem;
+    width: 8em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
 @media (max-width: 800px) {
     .blob {
         height: 30vh;
-        padding: 10%;
-        padding-top: 20%;
+        /* padding: 10%; */
+        /* padding-top: 20%; */
     }
     .blob .text-blob {
-        padding: 5%;
-        width: 100%;
+        padding: 0;
+        font-size: 1.2rem;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .qr-container {
+        height: 11rem;
+        width: 11rem;
+    }
+}
+
+@media (max-width: 414px) {
+    .logo {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .blob {
+        height: 45vh;
+    }
+
+    .blob .text-blob {
+        font-weight: 600;
+        font-size: 1rem;
+        bottom: 0;
+    }
+
+    .title {
         font-size: 1.2rem;
     }
 }

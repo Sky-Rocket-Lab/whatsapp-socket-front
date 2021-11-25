@@ -1,8 +1,4 @@
-import { useState, useEffect } from 'react'
-import { socket, config } from './services/socket'
-import axios from 'axios'
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from './views/Home/home'
 
 import './App.css'
@@ -11,54 +7,6 @@ function App() {
     // const [isAuthed, setIsAuthed] = useState(false)
 
     // const handleMessage = (msg) => console.log(msg)
-
-    // useEffect(() => {
-    //     // Conectarse al cliente de wp
-    //     socket.emit('wp-connect', [])
-
-    //     // Escuchar evento qr
-    //     socket.on('qr', (qr) => setQr(qr))
-
-    //     // Escuchar el evento de auth y recibir el token de sesion
-    //     socket.on('authenticated', ({ sessionToken }) => {
-    //         window.sessionStorage.setItem(
-    //             'wpSessionToken',
-    //             JSON.stringify(sessionToken)
-    //         )
-
-    //         setIsAuthed(true)
-
-    //         socket.emit('save-session', {
-    //             idAsesor: 1,
-    //             session: sessionToken,
-    //         })
-
-    //         console.log(
-    //             'user authenticated',
-    //             window.sessionStorage.getItem('wpSessionToken')
-    //         )
-    //     })
-
-    //     socket.on('message', (msg) => handleMessage(msg))
-
-    //     socket.on('ready', (msg) => handleMessage(msg))
-
-    //     socket.on('connected', () => {
-    //         console.log('user connected into the server')
-    //     })
-
-    //     socket.on('session-failed', (msg) => {
-    //         console.error(msg)
-    //     })
-
-    //     socket.on('session-saved', (msg) => {
-    //         console.log(msg)
-    //     })
-
-    //     return function cleanUp() {
-    //         socket.disconnect()
-    //     }
-    // }, [])
 
     // const sendMessage = () => {
     //     const number = '573044197396'
@@ -73,14 +21,14 @@ function App() {
     //         sessionToken,
     //     }
 
-    //     axios({
-    //         method: 'post',
-    //         url: `${config.serverDomain}api/message`,
-    //         data,
-    //         headers: {
-    //             id_asesor: 3,
-    //         },
-    //     })
+    // axios({
+    //     method: 'post',
+    //     url: `${config.serverDomain}api/message`,
+    //     data,
+    //     headers: {
+    //         id_asesor: 3,
+    //     },
+    // })
     // }
 
     // const saveSession = async () => {
@@ -109,9 +57,9 @@ function App() {
 
     return (
         <div className='App'>
-            <Home />
             <Routes>
-                <Route path='/' exact element={Home} />
+                <Route path='/' exact element={<Home />} />
+                <Route path='/:userId' element={<Home />} />
             </Routes>
         </div>
     )
