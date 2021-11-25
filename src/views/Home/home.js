@@ -78,8 +78,8 @@ const Home = () => {
             <div className='blob' style={{ backgroundImage: `url(${Blob})` }}>
                 <div className='text-blob'>
                     <p>
-                        Crearemos una sesión virtual de tu Whatsapp web para así
-                        poder enviar los mensajes que configures dentro de
+                        Crearemos una sesión virtual de tu Whatsapp web para
+                        así, poder enviar los mensajes que configures dentro de
                         backpro.
                     </p>
                 </div>
