@@ -20,7 +20,9 @@ const Home = () => {
                 setUser(res.data)
                 connectToSocket(res.data)
             })
-            .catch((e) => console.error(e))
+            .catch((e) => {
+                console.error('error finding a user', e)
+            })
 
         const connectToSocket = (user) => {
             if (user) {
