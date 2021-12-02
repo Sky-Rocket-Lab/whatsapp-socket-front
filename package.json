@@ -19,7 +19,10 @@
         "start": "craco start",
         "build": "craco build",
         "test": "craco test",
-        "eject": "react-scripts  eject"
+        "eject": "react-scripts  eject",
+        "docker:build": "docker build . -t test/cra-docker",
+        "docker:run": "docker run -p 8080:80 test/cra-docker --name react",
+        "docker:stop": "docker rm -f react"
     },
     "eslintConfig": {
         "extends": [

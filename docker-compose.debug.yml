@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  whatsappsocketfront:
+    image: whatsappsocketfront
+    build:
+      context: .
+      dockerfile: ./Dockerfile

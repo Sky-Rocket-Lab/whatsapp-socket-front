@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  whatsappsocketfront:
+    image: backpro/socket-spa
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/app
